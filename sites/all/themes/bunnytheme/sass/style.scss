@@ -15,12 +15,44 @@ $font: sans-serif;
 /* COLORS */
 $grey: #333333;
 $med-grey: #666666;
-$light-grey: #f3f3f3;
+$light-grey: #cccdce;
+$lightest-grey: #f3f3f3;
 $orange: #ff8417;
 $light-orange: #faebdf;
 $blue: #17aaff;
 $dark-blue: #1b75aa;
+$dark-green: #033333;
 
+
+div {
+	box-sizing: border-box;
+}
+
+h1 {
+	color: $orange;
+	font-style: italic;
+	@include adjust-font-size-to(32px);
+}
+
+p {
+	@include leader(1);
+	font-style: italic;
+}
+
+a, a:visited {
+	color: $blue;
+}
+
+address p, address {
+	font-weight: bold;
+	font-style: normal;
+}
+
+em {
+	color: $blue;
+	font-style: italic;
+	@include adjust-font-size-to(16px);
+}
 
 body {
 	font-family: $font;
@@ -61,7 +93,14 @@ body {
 		}
 	}
 
-	&.page-blog, &.page-archive {
+	&.page-rings {
+
+		h1 {
+			margin-bottom: 0.5em;
+		}
+	}
+
+	&.page-blog, &.page-archive, &.node-type-blog {
 
 		#sidebar-first {
 			width: $col;
@@ -76,6 +115,10 @@ body {
 
 			li {
 				margin: 0 0 0.25em 0;
+			}
+
+			a {
+				font-style: italic;
 			}
 
 			.block {
@@ -150,43 +193,324 @@ body {
 				@include adjust-font-size-to(12px);
 				}
 			}
-
 			
 
 		}
 	}
 
+	&.node-type-blog {
+
+		h1 {
+			@include adjust-font-size-to(28px);
+			font-style: normal;
+		}
+		
+		.field-name-body {
+
+			p {
+				color: $dark-green;
+			}
+			img {
+				float: right;
+				margin: 1.25em 0 1.25em 1.25em;
+			}
+		}
+		
+		.field-name-field-category, .field-name-field-posttags {
+			display: inline;
+			div {
+				display: inline;
+			}
+		}
+		
+		.meta {
+			padding-left: 77px;
+			height: 16px;
+			background:  url('../images/arrow-blog-posted-in.png') no-repeat left center;
+		}
+
+		.tag-wrapper {
+			padding-right: 54px;
+			background:  url('../images/arrow-blog-tagged.png') no-repeat right center;
+			text-align: right;
+		}
+
+		#comments {
+
+			h2 {
+				@include adjust-font-size-to(18px);
+				color: $orange;
+				font-weight: normal;
+			}
+
+			.attribution {
+				width: 60px;
+				float: left;
+				margin-right: 16px;
+				@include adjust-font-size-to(13px);
+
+				.user-picture {
+					border: 1px solid $light-grey;
+					overflow: hidden;
+					width: 60px;
+					height: 60px;
+					line-height: 60px;
+					text-align: center;
+				}
+
+				img {
+					vertical-align: middle;
+					display: inline;
+				}
+
+				.post-date {
+					color: $med-grey;
+					@include adjust-font-size-to(10px);
+				}
+			}
+
+			.comment-text {
+				float: right;
+				width: 564px;
+				margin-left: 16px;
+				border: 1px solid $light-grey;
+				position: relative;
+
+				.content {
+					position: relative;
+					left: -22px;
+					padding: 20px 20px 0 43px;
+					background:  url('../images/comment-arrow.png') no-repeat left 10px;
+					height: 100%;
+					width: 584px;
+				}
+
+				.links {
+					padding: 0 20px 20px;
+					float: left;
+
+					a, a:visited {
+						color: $dark-blue;
+						text-decoration: none;
+						@include adjust-font-size-to(11px);
+						font-style: none;
+					}
+				}
+			}
+
+			p {
+				margin-top: 0;
+				@include trailer(1);
+			}
+		}
+
+		.comment-form {
+
+			label {
+				display: inline;
+				float: left;
+			}
+
+			label:after {
+				content: ":";
+				padding-right: 16px;
+			}
+
+			.form-textarea-wrapper {
+				float: left;
+				width: 580px;
+
+				textarea {
+					border: 1px solid $blue;
+				}
+			}
+
+			.form-type-select, .filter-guidelines {
+				padding: 0;
+				margin: 0;
+				clear:  both;
+
+				label {
+					width: 76px;
+				}
+			}
+
+			.filter-guidelines {
+				margin-left: 78px;
+			}
+
+			#edit-actions {
+				margin-left: 76px;
+				margin-top: 0.75em;
+
+				input {
+					background: $blue;
+					color: #fff;
+					text-transform: uppercase;
+					font-weight: bold;
+					padding: 6px 8px;
+					font-size: 18px;
+					border: 1px solid $med-grey;
+				}
+			}
+
+			.filter-wrapper {
+				padding: 1em 0;
+
+				p {
+					margin: 0;
+				}
+
+				div {
+					padding: 0;
+				}
+			}
+
+			#edit-comment-body-und-0-format-help {
+				display: none;
+			}
+		}
+			
+	}
+
 }
 
-div {
-	box-sizing: border-box;
-}
 
-h1 {
-	color: $orange;
-	font-style: italic;
-	@include adjust-font-size-to(32px);
-}
 
-p {
-	@include leader(1);
-	font-style: italic;
-}
+.view-rings {
 
-a, a:visited {
-	color: $blue;
-	font-style: italic;
-}
+	.view-header {
+		width: $col;
+	}
+	.view-filters {
+		width: $col;
+		margin-right: $gutter;
+		float: left;
+		display: block;
+		
+		.views-exposed-form{
+			.views-exposed-widget {
+				display: block;
+				clear: both;
 
-address p, address {
-	font-weight: bold;
-	font-style: normal;
-}
+				select {
+					width: $col;
+				}
 
-em {
-	color: $blue;
-	font-style: italic;
-	@include adjust-font-size-to(16px);
+				.form-submit {
+					background: $blue;
+					color: #fff;
+					text-transform: uppercase;
+					font-weight: bold;
+					float: right;
+					border: none;
+					display: block;
+					padding: 6px 8px;
+					font-size: 12px;
+				}
+			}
+
+			.views-submit-button {
+					width: 100%;
+					padding: 0;
+			}
+		}
+
+	}
+	.view-content {
+		width: $col * 3;
+		float: left;
+
+		p {
+			font-style: normal;
+		}
+
+		.views-row {
+			border: 1px dashed $blue;
+			padding: 10px;
+			float: left;
+			margin-bottom: 20px;
+
+			.views-field {
+			float: left;
+			display: inline-block;
+			}
+
+			.views-field-field-featured-image {
+				width: 140px;
+				overflow: hidden;
+				margin-right: 10px;
+
+				.field-content, img {
+					width: 100%;
+					height: auto;
+				}
+			}
+
+			.views-field-title {
+				width: 480px;
+				a {
+				@include adjust-font-size-to(18px);
+				font-style: normal;
+				color: $blue;
+				text-decoration: none;
+				}	
+			} 
+
+			.views-field-body {
+				width: 260px;
+				padding-right: 16px;
+				border-right: 2px dashed $orange;
+				margin-right: 16px;
+				height: 90px;
+
+				p {
+					margin-top: 0;
+				}
+			}
+
+			.views-field-field-size, .views-field-field-color, .views-field-field-gem-size, .views-field-field-gem-type {
+				width: 203px;
+
+					span {
+						font-weight: bold;
+					}
+					.field-content {
+						display: inline;
+					}
+			} 
+
+			.views-field-path {
+				float: right;
+				margin: 20px 0 0 0;
+
+				a {
+					display: block;
+					text-transform: uppercase;
+					color: #fff;
+					padding: 6px 8px;
+					background: $blue;
+					text-decoration: none;
+					font-style: normal;
+
+					.icon-plus {
+						display: inline-block;
+						text-indent: -9999em;
+						height: 16px;
+						width: 17px;
+						background: url('../images/icon-plus.png') no-repeat center center;
+						margin-right: 6px;
+						line-height: 28px;
+						line-height: 16px;
+					}
+				}
+			}
+
+				
+		}
+
+		
+	}
 }
 
 
@@ -340,7 +664,7 @@ em {
 	}
 
 	input, textarea {
-		background: $light-grey;
+		background: $lightest-grey;
 		border: 1px solid $blue;
 		box-sizing: border-box;
 		width: 300px;
