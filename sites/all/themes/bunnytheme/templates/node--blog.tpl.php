@@ -112,11 +112,21 @@
     if ($teaser || !empty($content['comments']['comment_form'])):
       unset($content['links']['comment']['#links']['comment-add']);
     endif;
+
   ?>
 
-  <div class="tag-wrapper">
-    Tagged as <?php print render($content['field_posttags']); ?>
-  </div>
+  <?php 
+    if ($teaser) 
+      unset($content['field_posttags']);
+  ?>
+
+  <?php
+    if ($content['field_posttags']):
+  ?>
+    <div class="tag-wrapper tag-arrow">
+      Tagged as <?php print render($content['field_posttags']); ?>
+    </div>
+  <?php endif; ?>
 
   <a name="comments"></a>
   <?php print render($content['comments']); ?>

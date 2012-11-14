@@ -26,6 +26,7 @@ $dark-green: #033333;
 
 div {
 	box-sizing: border-box;
+	-moz-box-sizing: border-box;
 }
 
 h1 {
@@ -43,18 +44,17 @@ p {
 	font-style: italic;
 }
 
+.double-space {
+		line-height: 2em;
+}
+
 a, a:visited {
 	color: $blue;
 }
 
-address p, address {
-	font-weight: bold;
-	font-style: normal;
-}
-
 em {
 	color: $blue;
-	font-style: italic;
+	font-style: italic !important;
 	@include adjust-font-size-to(16px);
 }
 
@@ -94,6 +94,17 @@ body {
 	}
 
 	&.node-type-webform {
+
+		#content {
+			p {
+				font-style: italic;
+			}
+
+			address p, address {
+				font-weight: bold;
+				font-style: normal;
+			}
+		}
 
 		.field-name-body {
 			float: right;
@@ -163,7 +174,7 @@ body {
 		@include adjust-font-size-to(18px);
 		font-weight: bold;
 		font-style: normal;
-		margin-top: 20px;
+		margin-top: 1em;
 
 		a {
 			text-decoration: none;
@@ -217,11 +228,19 @@ body {
 		font-style: normal;
 	}
 
+	.comment-count {
+		float: right;
+	}
+
 	.meta {
 		padding-left: 77px;
 		height: 16px;
 		background:  url('../images/arrow-blog-posted-in.png') no-repeat left center;
 		font-style: italic;
+
+		.comment-count {
+			float: none;
+		}
 	}
 
 	.tag-wrapper {
@@ -243,6 +262,7 @@ body {
 
 }
 
+
 .view-archive, .view-blog {
 	.views-row {
 			float: left;
@@ -251,8 +271,9 @@ body {
 		}
 }
 
-.node-type-blog {
+.node-type-blog, .page-blog {
 
+	
 	.comment-count a{
 		text-decoration: none;
 	}
@@ -269,9 +290,12 @@ body {
 	}
 
 	.tag-wrapper {
+		text-align: right;
+	}
+
+	.tag-arrow {
 		padding-right: 54px;
 		background:  url('../images/arrow-blog-tagged.png') no-repeat right center;
-		text-align: right;
 	}
 
 	.category, .field-name-field-posttags {
@@ -425,7 +449,8 @@ body {
 .page-taxonomy {
 
 	.node {
-		margin-bottom: 1.5em;
+		padding-bottom: 2em;
+		border-bottom: 1px dashed $blue;
 	}
 
 	.description {
@@ -580,7 +605,7 @@ body {
 
 			.views-field-path {
 				float: right;
-				margin: 20px 0 0 0;
+				margin: 10px 0 0 0;
 
 				a {
 					display: block;
