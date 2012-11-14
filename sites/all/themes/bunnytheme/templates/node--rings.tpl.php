@@ -79,7 +79,6 @@
  */
 ?>
 
-
 <div id="node-<?php print $node->nid; ?>" class="<?php print $classes; ?> clearfix"<?php print $attributes; ?>>
   <?php print render($title_prefix); ?>
   <?php if (!$page): ?>
@@ -91,34 +90,35 @@
 
   <?php if ($display_submitted): ?>
     <div class="meta submitted">
-      Posted in <?php print render($content['field_category']);?> on <?php print format_date($created, 'custom', 'F d, Y'); ?> | <span class="comment-count"><a href="#comments">Comments (<?php print $comment_count; ?>)</a></span>
+      <?php print $user_picture; ?>
+      <?php print $submitted; ?>
     </div>
   <?php endif; ?>
 
   <div class="content clearfix"<?php print $content_attributes; ?>>
-    <?php
-      // We hide the comments and links now so that we can render them later.
-      hide($content['comments']);
-      hide($content['links']);
-      print render($content['body']);
-    ?>
+    <?php print render($content['field_featured_image']); ?>
+
+    <div class="specs">
+      <?php print render($content['field_price']); ?>
+      <?php print render($content['field_color']); ?>
+      <?php print render($content['field_size']); ?>
+      <?php print render($content['field_gem_type']); ?>
+      <?php print render($content['field_gem_size']); ?>
+    </div>
+    <div class="description">
+      <?php 
+        $body_text = ($content['body']['#object']->body['und'][0]['safe_value']); 
+        if (strlen($body_text) > 433) {
+          print (substr($body_text, 0, 433) . " ...");
+        }
+        else print $body_text;
+      ?>
+      <?php print render($content['links']); ?>
+   </div>
+   
+
   </div>
-
-
-
-  <?php
-    // Remove the "Add new comment" link on the teaser page or if the comment
-    // form is being displayed on the same page.
-    if ($teaser || !empty($content['comments']['comment_form'])):
-      unset($content['links']['comment']['#links']['comment-add']);
-    endif;
-  ?>
-
-  <div class="tag-wrapper">
-    Tagged as <?php print render($content['field_posttags']); ?>
-  </div>
-
-  <a name="comments"></a>
-  <?php print render($content['comments']); ?>
+ 
+  
 
 </div>

@@ -1012,7 +1012,7 @@ function search_box($form, &$form_state, $form_id) {
     '#title' => t('Search'),
     '#title_display' => 'invisible',
     '#size' => 15,
-    '#default_value' => '',
+    '#default_value' => 'Search this site',
     '#attributes' => array('title' => t('Enter the terms you wish to search for.')),
   );
   $form['actions'] = array('#type' => 'actions');

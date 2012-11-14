@@ -75,6 +75,7 @@
  * @see template_process()
  */
 ?>
+
 <div id="page-wrapper"><div id="page">
 
   <div id="header"><div class="section">
@@ -156,6 +157,12 @@
 		      <?php print render($title_prefix); ?>
 		      <?php if (!$is_front && $title): ?>
 		        <h1 class="title" id="page-title">
+		          <?php 
+
+		          if ($page['content']['system_main']['term_heading']['term']['#term']->vocabulary_machine_name) 
+		          	print "<span class=\"filter-type\">" . (str_replace("_", " ", $page['content']['system_main']['term_heading']['term']['#term']->vocabulary_machine_name)  . ": </span>"); 
+		          ?>		
+
 		          <?php print $title; ?>
 		        </h1>
 		      <?php endif; ?>

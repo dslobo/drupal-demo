@@ -32,6 +32,10 @@ h1 {
 	color: $orange;
 	font-style: italic;
 	@include adjust-font-size-to(32px);
+
+	.filter-type {
+		text-transform: capitalize;
+	}
 }
 
 p {
@@ -59,7 +63,15 @@ body {
 	color: #000;
 	background: url('../images/background.jpg');
 
+	&.no-sidebars {
+		#content {
+			width: 100%;
+		}
+	}
+
 	&.front  {
+
+		
 
 		.field-name-field-featured-image img {
 			float: left;
@@ -83,10 +95,13 @@ body {
 		}
 	}
 
-	&.node-type-webform .field-name-body {
-		float: right;
-		width: 50%;
-		padding-left: 40px;
+	&.node-type-webform {
+
+		.field-name-body {
+			float: right;
+			width: 50%;
+			padding-left: 40px;
+		}
 
 		img {
 			margin-right: 20px;
@@ -99,285 +114,370 @@ body {
 			margin-bottom: 0.5em;
 		}
 	}
+}
 
-	&.page-blog, &.page-archive, &.node-type-blog {
+#sidebar-first {
+	width: $col;
+	float: left;
+	margin-right: $gutter;
 
-		#sidebar-first {
-			width: $col;
-			float: left;
-			margin-right: $gutter;
-
-			h2 {
-				@include adjust-font-size-to(18px);
-				color: $orange;
-				font-weight: bold;
-			}
-
-			li {
-				margin: 0 0 0.25em 0;
-			}
-
-			a {
-				font-style: italic;
-			}
-
-			.block {
-				margin-bottom: 20px;
-			}
-
-			.view-comments-recent {
-				font-style: italic;
-				p {
-					margin-top: 0;
-					margin-bottom: 0.5em;
-				}
-				.views-field-name {
-					display: inline-block;
-					padding-left: 10px;
-					background:  url('../images/arrow-comments.png') no-repeat left center;
-				}
-				.views-field-subject {
-					display: inline;
-				}
-			}
-		}
-
-		#content {
-			width: $col * 3;
-			float: left;
-
-			h2 {
-				@include adjust-font-size-to(18px);
-				font-weight: bold;
-				font-style: normal;
-				margin-top: 20px;
-
-				a {
-					text-decoration: none;
-					font-style: normal;
-				}
-			}
-
-			p {
-				font-style: normal;
-			}
-
-			.views-field-field-category, .views-field-created, .views-field-comment-count-1, .views-field-field-posttags {
-				display: inline;
-
-				.field-content {
-					display: inline;
-				}
-			}
-
-			.views-field-field-category {
-				padding-left: 33px;
-				background:  url('../images/arrow-blog-post.png') no-repeat left center;
-			}
-
-			.views-field-comment-count-1 {
-				float: right;
-				padding-right: 5px;
-			}
-
-			.views-field-field-posttags {
-				float: right;
-			}
-
-			.item-list {
-				float: left;
-				width: 100%;
-
-				.pager {
-				margin: 2em 0 1em;
-				@include adjust-font-size-to(12px);
-				}
-			}
-			
-
-		}
+	h2 {
+		@include adjust-font-size-to(18px);
+		color: $orange;
+		font-weight: bold;
 	}
 
-	&.node-type-blog {
+	li {
+		margin: 0 0 0.25em 0;
+	}
 
-		h1 {
-			@include adjust-font-size-to(28px);
+	a {
+		font-style: italic;
+	}
+
+	.block {
+		margin-bottom: 20px;
+	}
+
+	.view-comments-recent {
+		font-style: italic;
+		p {
+			margin-top: 0;
+			margin-bottom: 0.5em;
+		}
+		.views-field-name {
+			display: inline-block;
+			padding-left: 10px;
+			background:  url('../images/arrow-comments.png') no-repeat left center;
+		}
+		.views-field-subject {
+			display: inline;
+		}
+	}
+}
+
+
+#content {
+	width: $col * 3;
+	float: left;
+
+	h2 {
+		@include adjust-font-size-to(18px);
+		font-weight: bold;
+		font-style: normal;
+		margin-top: 20px;
+
+		a {
+			text-decoration: none;
 			font-style: normal;
 		}
-		
-		.field-name-body {
-
-			p {
-				color: $dark-green;
-			}
-			img {
-				float: right;
-				margin: 1.25em 0 1.25em 1.25em;
-			}
-		}
-		
-		.field-name-field-category, .field-name-field-posttags {
-			display: inline;
-			div {
-				display: inline;
-			}
-		}
-		
-		.meta {
-			padding-left: 77px;
-			height: 16px;
-			background:  url('../images/arrow-blog-posted-in.png') no-repeat left center;
-		}
-
-		.tag-wrapper {
-			padding-right: 54px;
-			background:  url('../images/arrow-blog-tagged.png') no-repeat right center;
-			text-align: right;
-		}
-
-		#comments {
-
-			h2 {
-				@include adjust-font-size-to(18px);
-				color: $orange;
-				font-weight: normal;
-			}
-
-			.attribution {
-				width: 60px;
-				float: left;
-				margin-right: 16px;
-				@include adjust-font-size-to(13px);
-
-				.user-picture {
-					border: 1px solid $light-grey;
-					overflow: hidden;
-					width: 60px;
-					height: 60px;
-					line-height: 60px;
-					text-align: center;
-				}
-
-				img {
-					vertical-align: middle;
-					display: inline;
-				}
-
-				.post-date {
-					color: $med-grey;
-					@include adjust-font-size-to(10px);
-				}
-			}
-
-			.comment-text {
-				float: right;
-				width: 564px;
-				margin-left: 16px;
-				border: 1px solid $light-grey;
-				position: relative;
-
-				.content {
-					position: relative;
-					left: -22px;
-					padding: 20px 20px 0 43px;
-					background:  url('../images/comment-arrow.png') no-repeat left 10px;
-					height: 100%;
-					width: 584px;
-				}
-
-				.links {
-					padding: 0 20px 20px;
-					float: left;
-
-					a, a:visited {
-						color: $dark-blue;
-						text-decoration: none;
-						@include adjust-font-size-to(11px);
-						font-style: none;
-					}
-				}
-			}
-
-			p {
-				margin-top: 0;
-				@include trailer(1);
-			}
-		}
-
-		.comment-form {
-
-			label {
-				display: inline;
-				float: left;
-			}
-
-			label:after {
-				content: ":";
-				padding-right: 16px;
-			}
-
-			.form-textarea-wrapper {
-				float: left;
-				width: 580px;
-
-				textarea {
-					border: 1px solid $blue;
-				}
-			}
-
-			.form-type-select, .filter-guidelines {
-				padding: 0;
-				margin: 0;
-				clear:  both;
-
-				label {
-					width: 76px;
-				}
-			}
-
-			.filter-guidelines {
-				margin-left: 78px;
-			}
-
-			#edit-actions {
-				margin-left: 76px;
-				margin-top: 0.75em;
-
-				input {
-					background: $blue;
-					color: #fff;
-					text-transform: uppercase;
-					font-weight: bold;
-					padding: 6px 8px;
-					font-size: 18px;
-					border: 1px solid $med-grey;
-				}
-			}
-
-			.filter-wrapper {
-				padding: 1em 0;
-
-				p {
-					margin: 0;
-				}
-
-				div {
-					padding: 0;
-				}
-			}
-
-			#edit-comment-body-und-0-format-help {
-				display: none;
-			}
-		}
-			
 	}
 
+	p {
+		font-style: normal;
+	}
+
+	.category, .views-field-created, .views-field-comment-count-1, .views-field-field-posttags {
+		display: inline;
+
+		.field-content {
+			display: inline;
+		}
+	}
+
+	.category {
+		padding-left: 33px;
+		background:  url('../images/arrow-blog-post.png') no-repeat left center;
+	}
+
+	.views-field-comment-count-1 {
+		float: right;
+		padding-right: 5px;
+	}
+
+	.views-field-field-posttags {
+		float: right;
+	}
+
+	.item-list {
+		float: left;
+		width: 100%;
+
+		.pager {
+		margin: 2em 0 1em;
+		@include adjust-font-size-to(12px);
+		}
+	}
 }
 
 
 
+.node-type-blog, .page-archive, .page-blog {
+
+	h1 {
+		@include adjust-font-size-to(28px);
+		font-style: normal;
+	}
+
+	.meta {
+		padding-left: 77px;
+		height: 16px;
+		background:  url('../images/arrow-blog-posted-in.png') no-repeat left center;
+		font-style: italic;
+	}
+
+	.tag-wrapper {
+		float: right;
+	}
+
+	.field-body, .views-field-body {
+		margin-bottom: 1em;
+	}
+	
+}
+
+.page-archive, .page-blog {
+
+	.comment-count {
+		float: right;
+		padding-right: 5px;
+	}
+
+}
+
+.view-archive, .view-blog {
+	.views-row {
+			float: left;
+			padding-bottom: 1em;
+			border-bottom: 1px dashed $blue;
+		}
+}
+
+.node-type-blog {
+
+	.comment-count a{
+		text-decoration: none;
+	}
+
+	.field-name-body {
+
+		p {
+			color: $dark-green;
+		}
+		img {
+			float: right;
+			margin: 1.25em 0 1.25em 1.25em;
+		}
+	}
+
+	.tag-wrapper {
+		padding-right: 54px;
+		background:  url('../images/arrow-blog-tagged.png') no-repeat right center;
+		text-align: right;
+	}
+
+	.category, .field-name-field-posttags {
+		display: inline;
+		div {
+			display: inline;
+		}
+	}
+}
+
+#comments {
+
+	h2 {
+		@include adjust-font-size-to(18px);
+		color: $orange;
+		font-weight: normal;
+	}
+
+	.attribution {
+		width: 60px;
+		float: left;
+		margin-right: 16px;
+		@include adjust-font-size-to(13px);
+
+		.user-picture {
+			border: 1px solid $light-grey;
+			overflow: hidden;
+			width: 60px;
+			height: 60px;
+			line-height: 60px;
+			text-align: center;
+		}
+
+		img {
+			vertical-align: middle;
+			display: inline;
+		}
+
+		.post-date {
+			color: $med-grey;
+			@include adjust-font-size-to(10px);
+		}
+	}
+
+	.comment-text {
+		float: right;
+		width: 564px;
+		margin-left: 16px;
+		border: 1px solid $light-grey;
+		position: relative;
+
+		.content {
+			position: relative;
+			left: -22px;
+			padding: 20px 20px 0 43px;
+			background:  url('../images/comment-arrow.png') no-repeat left 10px;
+			height: 100%;
+			width: 584px;
+		}
+
+		.links {
+			padding: 0 20px 20px;
+			float: left;
+
+			a, a:visited {
+				color: $dark-blue;
+				text-decoration: none;
+				@include adjust-font-size-to(11px);
+				font-style: none;
+			}
+		}
+	}
+
+	p {
+		margin-top: 0;
+		@include trailer(1);
+	}
+}
+
+.comment {
+	margin-bottom: 20px;
+}
+
+.comment-form {
+
+	label {
+		display: inline;
+		float: left;
+	}
+
+	label:after {
+		content: ":";
+		padding-right: 16px;
+	}
+
+	.form-textarea-wrapper {
+		float: left;
+		width: 580px;
+
+		textarea {
+			border: 1px solid $blue;
+		}
+	}
+
+	.form-type-select, .filter-guidelines {
+		padding: 0;
+		margin: 0;
+		clear:  both;
+
+		label {
+			width: 76px;
+		}
+	}
+
+	.filter-guidelines {
+		margin-left: 78px;
+	}
+
+	#edit-actions {
+		margin-left: 76px;
+		margin-top: 0.75em;
+
+		input {
+			background: $blue;
+			color: #fff;
+			text-transform: uppercase;
+			font-weight: bold;
+			padding: 6px 8px;
+			font-size: 18px;
+			border: 1px solid $med-grey;
+		}
+	}
+
+	.filter-wrapper {
+		padding: 1em 0;
+
+		p {
+			margin: 0;
+		}
+
+		div {
+			padding: 0;
+		}
+	}
+
+	#edit-comment-body-und-0-format-help {
+		display: none;
+	}
+}
+
+.page-taxonomy {
+
+	.node {
+		margin-bottom: 1.5em;
+	}
+
+	.description {
+		float: left;
+		width: 600px;
+		p {
+			margin-top: 0;
+		}
+	}
+
+	.field-name-field-featured-image {
+		float: left;
+		width: 145px;
+		height: 90px;
+		margin-right: 20px;
+		overflow: hidden;
+
+		div {
+			height: 100%;
+			width: 100%;
+			position: relative;
+		}
+
+		img {
+			top: 50%;
+			left: 50%;
+			display: block;
+			position: absolute;
+		}
+	}
+
+	.specs {
+		float: left;
+		width: 145px;
+		margin-right: 20px;
+	}
+
+	ul.links.inline {
+		display: inline-block;
+		width: 100%;
+
+		li {
+			float: right;
+		}
+	}
+}
+
 .view-rings {
+	width: 920px;
+	float: left;
 
 	.view-header {
 		width: $col;
@@ -419,7 +519,7 @@ body {
 	}
 	.view-content {
 		width: $col * 3;
-		float: left;
+		float: right;
 
 		p {
 			font-style: normal;
