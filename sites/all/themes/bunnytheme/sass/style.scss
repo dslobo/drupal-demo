@@ -268,6 +268,7 @@ body {
 			float: left;
 			padding-bottom: 1em;
 			border-bottom: 1px dashed $blue;
+			width: 100%;
 		}
 }
 
@@ -553,16 +554,14 @@ body {
 			padding: 10px;
 			float: left;
 			margin-bottom: 20px;
+			width: 100%;
 
-			.views-field {
-			float: left;
-			display: inline-block;
-			}
 
-			.views-field-field-featured-image {
+			.field-featured-image {
 				width: 140px;
 				overflow: hidden;
 				margin-right: 10px;
+				float: left;
 
 				.field-content, img {
 					width: 100%;
@@ -570,32 +569,36 @@ body {
 				}
 			}
 
-			.views-field-title {
+			.title {
 				width: 480px;
+				float: left;
+
 				a {
-				@include adjust-font-size-to(18px);
-				font-style: normal;
-				color: $blue;
-				text-decoration: none;
+					@include adjust-font-size-to(18px);
+					font-style: normal;
+					color: $blue;
+					text-decoration: none;
 				}	
 			} 
 
-			.views-field-body {
+			.body {
 				width: 260px;
 				padding-right: 16px;
 				border-right: 2px dashed $orange;
 				margin-right: 16px;
 				height: 90px;
+				float: left;
 
 				p {
 					margin-top: 0;
 				}
 			}
 
-			.views-field-field-size, .views-field-field-color, .views-field-field-gem-size, .views-field-field-gem-type {
+			.specs {
 				width: 203px;
+				float: left;
 
-					span {
+					.views-label {
 						font-weight: bold;
 					}
 					.field-content {
@@ -603,7 +606,7 @@ body {
 					}
 			} 
 
-			.views-field-path {
+			.path {
 				float: right;
 				margin: 10px 0 0 0;
 
